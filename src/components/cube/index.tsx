@@ -20,7 +20,7 @@ export const Cube = ({
       onDoubleClick={onClick}
       disabled={active || primary}
       className={clsx(
-        "w-20 h-20 bg-gray-700 shrink-0 rounded-lg flex items-center justify-center text-xl font-semibold",
+        "w-14 h-14 bg-gray-700 shrink-0 rounded-lg flex items-center justify-center text-xl font-semibold",
         { "bg-white text-gray-800": primary },
         { "bg-green-400 text-white": active }
       )}

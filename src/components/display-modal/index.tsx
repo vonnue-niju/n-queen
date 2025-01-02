@@ -17,22 +17,32 @@ type IndexArrayTypes = {
 
 const generateCubes = (numberOfRows: number) => {
   const arr = [];
+  const indexArr: number[] = [];
   for (let i = 0; i < numberOfRows; i++) {
     for (let j = 0; j < numberOfRows; j++) {
       arr.push({ rowIndex: i, colIndex: j });
     }
   }
 
-  return arr;
+  arr.map((val, index) => {
+    indexArr.push(index);
+  });
+
+  return { arr, indexArr };
 };
 
 export const DisplayModal = ({
   numberOfRows,
   handleModal,
 }: DisplayModalProps) => {
+//   const [gameFinished, setGameFinished] = useState(false);
+
   const [indexArray, setIndexArray] = useState<IndexArrayTypes[]>(
     [] as IndexArrayTypes[]
   );
+//   const [cellIndexes, setCellIndexes] = useState<number[] | null>(
+//     [] as number[]
+//   );
   const [isArrayGenerating, setIsArrayGenerating] = useState(true);
 
   const [primaryCellIndex, setPrimaryCellIndex] = useState<number[]>(
@@ -46,7 +56,8 @@ export const DisplayModal = ({
 
   useEffect(() => {
     const data = generateCubes(numberOfRows);
-    setIndexArray(data);
+    setIndexArray(data.arr);
+    // setCellIndexes(data.indexArr);
     setIsArrayGenerating(false);
   }, [numberOfRows]);
 
